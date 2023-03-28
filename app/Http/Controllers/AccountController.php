@@ -19,13 +19,9 @@ class AccountController extends Controller
         $data = [];
 
         foreach ($accounts as $account) {
-            $destinationAmount = $account
-                ->destinationTransactions()
-                ->sum('amount');
+            $destinationAmount = $account->destinationTransactions()->sum('amount');
 
-            $originAmount = $account
-                ->originTransactions()
-                ->sum('amount');
+            $originAmount = $account->originTransactions()->sum('amount');
 
             $balance = $destinationAmount - $originAmount;
             $data[] = [
@@ -38,3 +34,4 @@ class AccountController extends Controller
     }
 
 }
+
