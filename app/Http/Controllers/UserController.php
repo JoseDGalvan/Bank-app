@@ -56,12 +56,8 @@ class UserController extends Controller
         $totalBalance = 0;
 
         foreach ($accounts as $account) {
-            $destinationAmount = $account
-                ->destinationTransactions()
-                ->sum('amount');
-            $originAmount = $account
-                ->originTransactions()
-                ->sum('amount');
+            $destinationAmount = $account->destinationTransactions()->sum('amount');
+            $originAmount = $account->originTransactions()->sum('amount');
             $balance =  $destinationAmount - $originAmount;
             $totalBalance += $balance;
         }
